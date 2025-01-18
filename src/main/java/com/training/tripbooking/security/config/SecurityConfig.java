@@ -60,9 +60,16 @@ public class SecurityConfig {
 						 * .requestMatchers("/admingreet").hasRole("ADMIN")
 						 */
                 	
-                	//Bookings Path
+                	//Bookings Path for user
                 	//.requestMatchers("/api/bookings/insert").hasRole("USER")
-                	.requestMatchers("/api/bookings/insert").permitAll()
+                	.requestMatchers("/api/bookings/insert").hasRole("USER")
+                	.requestMatchers("/api/bookings/view").permitAll()
+
+                	//Bookings Path for admin
+                	.requestMatchers("/api/bookings/delete").hasRole("ADMIN")
+                	.requestMatchers("/api/bookings/all/packagebooking").hasRole("USER")
+                	
+
                 	
                 	
                 	//payment securitycode
