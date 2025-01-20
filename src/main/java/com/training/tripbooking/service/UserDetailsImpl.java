@@ -1,9 +1,7 @@
 package com.training.tripbooking.service;
 
-
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -17,9 +15,7 @@ public class UserDetailsImpl implements UserDetails {
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
-
 	private String username;
-
 	private String email;
 
 	@JsonIgnore
@@ -38,15 +34,9 @@ public class UserDetailsImpl implements UserDetails {
 
 	public static UserDetailsImpl build(UserEntity user) {
 		List<GrantedAuthority> authorities = user.getRoles().stream()
-				.map(role -> new SimpleGrantedAuthority(role.getName().name()))
-				.collect(Collectors.toList());
+				.map(role -> new SimpleGrantedAuthority(role.getName().name())).collect(Collectors.toList());
 
-		return new UserDetailsImpl(
-				user.getId(), 
-				user.getUsername(), 
-				user.getEmail(),
-				user.getPassword(), 
-				authorities);
+		return new UserDetailsImpl(user.getId(), user.getUsername(), user.getEmail(), user.getPassword(), authorities);
 	}
 
 	@Override
@@ -54,51 +44,57 @@ public class UserDetailsImpl implements UserDetails {
 		return authorities;
 	}
 
+	@Override
+	public String getPassword() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	public Long getId() {
 		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getEmail() {
 		return email;
 	}
 
-	@Override
-	public String getPassword() {
-		return password;
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
+		this.authorities = authorities;
 	}
 
 	@Override
-	public String getUsername() {
-		return username;
+	public String toString() {
+		return "UserDetailsImpl [id=" + id + ", username=" + username + ", email=" + email + ", password=" + password
+				+ ", authorities=" + authorities + "]";
 	}
 
-	@Override
-	public boolean isAccountNonExpired() {
-		return true;
+	public UserDetailsImpl() {
+		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public boolean isAccountNonLocked() {
-		return true;
-	}
+	
 
-	@Override
-	public boolean isCredentialsNonExpired() {
-		return true;
-	}
-
-	@Override
-	public boolean isEnabled() {
-		return true;
-	}
-
-	@Override
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
-		UserDetailsImpl user = (UserDetailsImpl) o;
-		return Objects.equals(id, user.id);
-	}
+	
 }

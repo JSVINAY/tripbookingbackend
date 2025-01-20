@@ -57,7 +57,13 @@ public class UserEntity {
         this.postalcode = postalcode;
     }
 
-    public UserEntity() {
+    public UserEntity(@NotBlank String username, @NotBlank String email, @NotBlank String password) {
+		this.username = username;
+		this.email = email;
+		this.password = password;
+	}
+
+	public UserEntity() {
     }
 
     // Getters and Setters

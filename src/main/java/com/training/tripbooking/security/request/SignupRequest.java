@@ -49,6 +49,35 @@ public class SignupRequest {
     @Pattern(regexp = "^[0-9]{5,10}$", message = "Invalid postal code format")
     private String postalcode;
 
+    // Constructor to match the test case
+    public SignupRequest(String username, String password, Set<String> role, String email,
+                         String phonenumber, String gender, String address, String state,
+                         String country, String postalcode) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.email = email;
+        this.phonenumber = phonenumber;
+        this.gender = gender;
+        this.address = address;
+        this.state = state;
+        this.country = country;
+        this.postalcode = postalcode;
+    }
+
+    // Getter and Setter methods for each field
+
+    public SignupRequest() {
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+    public String toString() {
+        return "SignupRequest [username=" + username + ", password=" + password + ", role=" + role + ", email=" + email
+                + ", phonenumber=" + phonenumber + ", gender=" + gender + ", address=" + address + ", state=" + state
+                + ", country=" + country + ", postalcode=" + postalcode + "]";
+    }
+
     // Getters and Setters
     public String getUsername() {
         return username;
