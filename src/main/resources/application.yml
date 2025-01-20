@@ -1,24 +1,37 @@
 # Application Name
 spring:
   application:
-    name: basicspringsecuritydemousingdb
+    name: tripbookingbackend
 
   # Datasource Configuration
   datasource:
-    url: jdbc:mysql://localhost:3306/tripbookingdb?createDatabaseIfNotExist=true
-    username: root
-    password: Root
-    driver-class-name: com.mysql.cj.jdbc.Driver
-
-  # JPA Configuration
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: password
+    driver-class-name: org.h2.Driver
   jpa:
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQLDialect
+        dialect: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: update
     show-sql: true
 
+  # Cloud Config (Disabled)
+  cloud:
+    config:
+      enabled: false
+
+# JWT Configuration
 # JWT Configuration
 jwtSecret: BLUEYONDERBELLANDURBENGALURUBLUEYONDERBELLANDURBENGALURUBLUEYONDERBELLANDURBENGALURUBENGALURUBLUEYONDERBELLANDURBENGALURUBENGALURUBLUEYONDERBELLANDURBENGALURU
 jwtExpirationMs: 86400000
+logging:
+  file:
+    name: logs/app.log
+  logback:
+    rollingpolicy:
+      file-name-pattern: logs/%d{yyyy-MM, aux}/app.%d{yyyy-MM-dd}.%i.log
+      max-file-size: 10MB
+      total-size-cap: 1GB
+      max-history: 10

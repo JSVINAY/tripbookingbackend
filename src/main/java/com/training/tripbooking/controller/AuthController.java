@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -37,7 +39,9 @@ import jakarta.validation.Valid;
 @RequestMapping("/api/auth")
 public class AuthController {
 
-	@Autowired
+  private static final Logger logger = LoggerFactory.getLogger(AuthController.class); // Initialize logger
+
+ 	@Autowired
 	private UserRepository userRepository;
 
 	@Autowired
@@ -126,4 +130,5 @@ public class AuthController {
 
 		return roles;
 	}
+
 }

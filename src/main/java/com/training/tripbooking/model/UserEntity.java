@@ -1,5 +1,6 @@
 package com.training.tripbooking.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.Entity;
@@ -41,7 +42,7 @@ public class UserEntity {
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
+    private Set<Role> roles = new HashSet<>(); 
 
     // Constructor for signup
     public UserEntity(String username, String email, String password, String address, String phonenumber, String gender,
@@ -55,6 +56,7 @@ public class UserEntity {
         this.state = state;
         this.country = country;
         this.postalcode = postalcode;
+        this.roles = new HashSet<>(); 
     }
 
     public UserEntity(@NotBlank String username, @NotBlank String email, @NotBlank String password) {
