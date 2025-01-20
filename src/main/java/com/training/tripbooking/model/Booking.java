@@ -43,6 +43,15 @@ public class Booking {
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	//@JsonIgnore
 	private UserEntity user;
+	
+	
+
+	@Override
+	public String toString() {
+		return "Booking [bookingId=" + bookingId + ", destination=" + destination + ", passengers=" + passengers
+				+ ", stayType=" + stayType + ", pickupLocation=" + pickupLocation + ", dropLocation=" + dropLocation
+				+ ", user=" + user + "]";
+	}
 
 	public Booking(Long bookingId, String destination, List<Passenger> passengers, StayType stayType,
 			String pickupLocation, String dropLocation, UserEntity user) {
