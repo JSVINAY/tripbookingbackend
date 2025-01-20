@@ -32,6 +32,11 @@ public class Role {
 	}
 
 
+	public Role(ERole roleUser) {
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public Integer getId() {
 		return id;
 	}

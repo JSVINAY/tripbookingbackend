@@ -14,7 +14,6 @@ import com.training.tripbooking.repositories.UserRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-
     private static final Logger logger = LoggerFactory.getLogger(UserDetailsServiceImpl.class); // Initialize logger
 
     @Autowired
