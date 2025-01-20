@@ -1,5 +1,10 @@
 package com.training.tripbooking.model;
 
+import java.time.LocalDate;  // Import LocalDate
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -7,12 +12,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-
-import java.time.LocalDate;  // Import LocalDate
-
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 @Entity
 public class TripPackage {
 
@@ -29,15 +28,10 @@ public class TripPackage {
     private Integer duration;
    
     private LocalDate startDate; // Change String to LocalDate
+    // No-argument constructor (required by Hibernate)
+    public TripPackage() {
+    }
     
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "id", nullable = false)
-	@OnDelete(action = OnDeleteAction.CASCADE)
-	//@JsonIgnore
-	private UserEntity user;
-
-    // Constructors
-    public TripPackage() {}
 
     public TripPackage(String destination, String image, Double price, Integer duration, LocalDate startDate) {
         this.destination = destination;
@@ -95,4 +89,6 @@ public class TripPackage {
     public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
+
+  
 }
