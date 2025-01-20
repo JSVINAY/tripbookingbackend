@@ -30,11 +30,7 @@ public class TripPackage {
    
     private LocalDate startDate; // Change String to LocalDate
     
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "id", nullable = false)
-	@OnDelete(action = OnDeleteAction.CASCADE)
-	//@JsonIgnore
-	private UserEntity user;
+
 
     // Constructors
     public TripPackage() {}
